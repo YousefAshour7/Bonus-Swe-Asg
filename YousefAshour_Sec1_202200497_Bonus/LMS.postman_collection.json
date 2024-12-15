@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "c759245c-b42e-4697-a9dc-4304c0bf85c5",
+		"name": "LMS",
+		"description": "All Endpoints for LMS Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38974515",
+		"_collection_link": "https://h-bay3.postman.co/workspace/d31219b6-9f53-471d-af25-e7d31490097e/collection/38974515-c759245c-b42e-4697-a9dc-4304c0bf85c5?action=share&source=collection_link&creator=38974515"
+	},
+	"item": [
+		{
+			"name": "Get books",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/books",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"books"
+					]
+				},
+				"description": "Returns a list of all books"
+			},
+			"response": []
+		},
+		{
+			"name": "Add book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"Author\": \"Author2\",\r\n        \"ISBN\": \"9789007792\",\r\n        \"Published_Year\": 2004,\r\n        \"title\": \"Book2\"\r\n    }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}/books",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"books"
+					]
+				},
+				"description": "Adds a book to the books list"
+			},
+			"response": []
+		},
+		{
+			"name": "Update book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Published_Year\": 2023\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://{{base_url}}/books/9789007792",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"books",
+						"9789007792"
+					]
+				},
+				"description": "Updates a book by ISBN"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/books/9789007790",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"books",
+						"9789007790"
+					]
+				},
+				"description": "Deletes a book by ISBN"
+			},
+			"response": []
+		},
+		{
+			"name": "Search for book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{auth_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://{{base_url}}/books/search?Author=Author1&Genre=Fiction",
+					"protocol": "http",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"books",
+						"search"
+					],
+					"query": [
+						{
+							"key": "Author",
+							"value": "Author1"
+						},
+						{
+							"key": "Genre",
+							"value": "Fiction"
+						}
+					]
+				},
+				"description": "Search for book"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "auth_token",
+			"value": "ManchesterIsWounded!",
+			"type": "default"
+		},
+		{
+			"key": "base_url",
+			"value": "localhost:3000",
+			"type": "default"
+		}
+	]
+}
